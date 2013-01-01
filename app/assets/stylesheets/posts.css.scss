@@ -1,0 +1,85 @@
+@mixin post_base {
+	margin-top: 150px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+	height: 400px;	
+}
+
+#posts_container {
+	@include post_base;	
+}
+
+#post_container {
+	@include post_base;
+}
+
+#post_body {
+	padding: 25px;
+	height: 400px;	
+	overflow: auto;
+}
+
+#post_body.published { 
+	border: 3px solid #969696; 
+}
+
+#post_title {
+	font-size:170%;
+	display: block;
+	text-align: center;
+}
+
+#post_tags {
+	display: block;
+	text-align: center;
+}
+
+#content {
+	padding: 25px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 480px;
+	height: 380px;
+	overflow:auto;
+}
+
+a:link {color:#000000;}
+a:visited {color:#4F4F4F;}
+a:hover {color:#FFFFFF;}
+a:active {color:#4F4F4F;}
+
+#new_post_link, #sign_in-out_link, .pagination {
+	display: block;
+	text-align: center;
+}
+
+.nav_bottom {
+	margin-top: 25px;
+	display: block;
+	text-align: center;
+}
+
+#state_selector {
+	margin-left: auto;
+	margin-right: auto;	
+	width: 300px;
+}
+
+.styled-select {
+	background: transparent;
+	width: 268px;
+	padding: 1px;
+	font-family: Copperplate, "Copperplate Gothic Light", fantasy;
+	font-size: 100%;
+	line-height: 1;
+	border: 0;
+	border-radius: 0;
+	height: 25px;
+}
+
+// this doesn't work, not sure why
+.select_option {
+	font-family: Copperplate, "Copperplate Gothic Light", fantasy;
+	font-size: 100%;
+}

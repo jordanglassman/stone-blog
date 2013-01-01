@@ -1,0 +1,33 @@
+<div id="post_container">
+
+	<p class="<%= @post.state %>" id="post_title">
+	  <%= @post.title %>
+	</p>
+
+	<div class="<%= @post.state %>" id="post_body">
+	
+		<%= conditional_notice %>
+
+		<p>
+		  <%= render_markdown @post.body %>
+		</p>
+
+		<p>
+		  <%= if @post.published? then @post.published_at.strftime("Published on %m/%d/%Y at %I:%M%p") end %>
+		</p>
+
+	</div>
+
+	<p class="<%= @post.state %>" id="post_tags">
+		<%= raw @post.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %>
+	</p>
+
+	<div class="nav_bottom">
+		<% if editor_signed_in? && !@post.published? %>
+			<%= link_to 'Edit', edit_post_path(@post) %> |
+		<% end %>
+		<%= link_to 'Back', posts_path %>
+	</div>
+
+</div>
+

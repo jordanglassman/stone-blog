@@ -1,0 +1,13 @@
+<% @posts.each do |post| %>
+  <tr>
+		<% if editor_signed_in? %>
+	    <td><%= post.state.capitalize %></td>
+		<% end %>
+    <td><%= link_to post.title, post %></td>
+		<% if editor_signed_in? %>
+	    <td><%= link_to 'Edit', edit_post_path(post) %></td>
+	    <td><%= link_to 'Toss', post_path(post, :abandon_draft => 'Toss'), :method => :put,
+				data: { confirm: 'Are you sure?' } if post.tossable? %></td>
+		<% end %>
+  </tr>
+<% end %>

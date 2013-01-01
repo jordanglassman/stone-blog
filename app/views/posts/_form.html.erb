@@ -1,0 +1,43 @@
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<%= conditional_notice %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title, :disabled => (@post.editable? ? false : true) %>
+  </div>
+
+  <div class="field">
+    <%= f.label 'Custom URL (Optional):' %><br />
+    <%= f.text_field :slug, :disabled => (@post.editable? ? false : true) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_area :body, :disabled => (@post.editable? ? false : true) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tag_list %><br />
+    <%= f.text_field :tag_list, :disabled => (@post.editable? ? false : true) %>
+  </div>
+
+  <div class="actions">
+		<%= submit_tag "Save", :name => 'save_draft', :disabled => (@post.savable? ? false : true) %>
+		<%= submit_tag "Finalize", :name => 'finalize_draft', :disabled => (@post.finalizable? ? false : true) %>
+		<%= submit_tag "Publish", :name => 'publish_draft', :disabled => (@post.publishable? ? false : true) %>
+		<%= submit_tag "Toss", :name => 'abandon_draft', :disabled => (@post.tossable? ? false : true) %>
+  </div>
+
+<% end %>

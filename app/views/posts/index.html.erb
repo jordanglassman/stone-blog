@@ -1,0 +1,26 @@
+<div id="posts_container">
+
+	<div id="state_selector"><%= if editor_signed_in? then display_filter_select end %></div>
+	
+	<div id="content">
+		
+		<%= conditional_notice %>
+		
+		<table id="posts_table" >
+			<%= render 'list' %>
+		</table>
+	
+	</div>
+	
+	<div class="nav_bottom">
+		<%= if editor_signed_in? then link_to 'New Post', new_post_path, id: 'new_post_link' end %>
+		<%= will_paginate @posts %>
+		<% if editor_signed_in? %> 
+			<%= link_to 'Sign Out', destroy_editor_session_path, id: 'sign_in-out_link', :method => :delete %>
+		<% else %>
+			<%= link_to 'Sign In', new_editor_session_path, id: 'sign_in-out_link' %>
+		<% end %>
+		<%= link_to 'Home', posts_path, id: 'sign_in-out_link' %>
+	</div>
+	
+</div>
