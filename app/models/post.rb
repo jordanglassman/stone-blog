@@ -19,7 +19,7 @@ class Post < ActiveRecord::Base
   validates :slug, :uniqueness => true, :presence => true
   validates :slug, :format => { :with => /[A-Za-z0-9\-]+/, :message => "can contain only letters, numbers, and hyphens." }
       
-  validates :body, :format => { :with => /^[A-Za-z0-9\-\#\*\.\[\]\>\_\\ ]*$/, :message => "can contain only valid markdown characters." }
+  validates :body, :format => { :with => /^[A-Za-z0-9\-\#\*\.\[\]\>\_\\\@\'\"\:\;\,\/ ]*$/, :message => "can contain only valid markdown characters." }
       
   scope :time_ordered, order('created_at desc')
   scope :with_state, lambda { |state| state.present? ? { :conditions => {:state => state} } : {} }
