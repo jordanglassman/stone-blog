@@ -44,9 +44,11 @@ gem 'will_paginate', '~> 3.0'
 gem 'faker'
 gem 'redcarpet'
 
+# pulled outside of :test to facilitate heroku deploy
+gem 'single_test'
+  
 group :test do
   gem 'factory_girl_rails'
-  gem 'single_test'
   gem 'mocha', :require => false
 end
 
