@@ -43,6 +43,7 @@ gem "friendly_id", "~> 4.0.1"
 gem 'will_paginate', '~> 3.0'
 gem 'faker'
 gem 'redcarpet'
+gem 'thin'
 
 # pulled outside of :test to facilitate heroku deploy
 gem 'single_test'
